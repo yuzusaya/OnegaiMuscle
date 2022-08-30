@@ -36,6 +36,7 @@ namespace OnegaiMuscle.ViewModels
             //{
             //    return;
             //}
+            return;
             var today = DateTime.Today;
 #warning record and check last submitted date of selected user
             var lastSubmittedDate = Preferences.Get("LastSubmitDate", DateTime.MinValue);
