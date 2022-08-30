@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:renderer="clr-namespace:OnegaiMuscle.CustomRenderer;assembly=OnegaiMuscle"
+             x:Class="OnegaiMuscle.VerificationPage"
+             Shell.NavBarIsVisible="False">
+    <Grid VerticalOptions="FillAndExpand" x:Name="screen">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+            <Frame BackgroundColor="#F5F5F5" VerticalOptions="FillAndExpand" BorderColor="#F5F5F5">
+                <skia:SKLottieView
+                    Margin="0,-50,0,0"
+                    Source="push-ups.json"
+                    RepeatCount="-1"
+                    RepeatMode="Reverse"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1">
+            <Frame BackgroundColor="#D66228" VerticalOptions="FillAndExpand" BorderColor="#D66228" CornerRadius="50" Margin="0,0,0,-50" HeightRequest="500">
+                <StackLayout>
+                    <StackLayout>
+                        <Label
+                    Text="Verification Code"
+                    FontSize="36"
+                    FontAttributes="Bold"
+                    FontFamily="Roboto"
+                    TextColor="#F5F5F5"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Margin="20"/>
+
+                        <Label
+                    Text="Please type the verification code to use this application"
+                    FontSize="20"
+                    FontAttributes="None"
+                    FontFamily="Roboto"
+                    TextColor="#F5F5F5"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Margin="20"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30" Margin="30">
+                        <Frame x:Name="box1" BackgroundColor="White" BorderColor="DarkGray" WidthRequest="50" VerticalOptions="Fill" Padding="0" Margin="0">
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next" Keyboard="Numeric" MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                        </Frame>
+                        <Frame x:Name="box2"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_1" Unfocused="box1_Unfocused"  Text="" ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                        </Frame>
+                        <Frame x:Name="box3"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_2" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                        </Frame>
+                        <Frame x:Name="box4"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_3" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <Button Text="Verify" FontSize="24" FontAttributes="Bold" FontFamily="Roboto" BackgroundColor="#232323" Margin="40,20,40,0"></Button>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>
