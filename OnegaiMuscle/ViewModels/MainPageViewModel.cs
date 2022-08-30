@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using OnegaiMuscle.Models;
 
 namespace OnegaiMuscle.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : BaseViewModel
     {
         public List<string> SessionList => new()
         {
@@ -21,7 +22,20 @@ namespace OnegaiMuscle.ViewModels
             "Session 6 (3.30 pm - 5.00 pm)",
             "Session 7 (5.00 pm - 6.00 pm) Strictly For Staff Only"
         };
-        public int SelectedUserProfileId { get; set; }
+
+        private string _userName = "Anonymous";
+
+        public string UserName
+        {
+            get => _userName;
+            set => SetProperty(ref _userName, value);
+        }
+
+        public int SelectedUserProfileId
+        {
+            get;
+            set;
+        }
 
         public string SelectedSession { get; set; }
 
@@ -37,6 +51,7 @@ namespace OnegaiMuscle.ViewModels
             //    return;
             //}
             return;
+
             var today = DateTime.Today;
 #warning record and check last submitted date of selected user
             var lastSubmittedDate = Preferences.Get("LastSubmitDate", DateTime.MinValue);

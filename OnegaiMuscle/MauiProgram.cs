@@ -1,4 +1,6 @@
-﻿namespace OnegaiMuscle;
+﻿using CommunityToolkit.Maui;
+
+namespace OnegaiMuscle;
 
 public static class MauiProgram
 {
@@ -12,7 +14,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+        builder.UseMauiApp<App>().UseMauiCommunityToolkit();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

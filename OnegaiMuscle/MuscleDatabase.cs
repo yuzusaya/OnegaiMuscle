@@ -18,7 +18,12 @@ namespace OnegaiMuscle
             database.CreateTableAsync<UserProfile>().Wait();
         }
 
-        public Task<List<UserProfile>> GetLocationsAsync()
+        public Task<UserProfile> GetProfileByIdAsync(int id)
+        {
+            return database.Table<UserProfile>().FirstOrDefaultAsync(x=>x.Id==id);
+        }
+
+        public Task<List<UserProfile>> GetProfilesAsync()
         {
             return database.Table<UserProfile>().ToListAsync();
         }
@@ -40,7 +45,4 @@ namespace OnegaiMuscle
             return database.DeleteAsync(item);
         }
     }
-
-
-}
 }
