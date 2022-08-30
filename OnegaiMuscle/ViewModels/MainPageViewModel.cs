@@ -35,10 +35,23 @@ namespace OnegaiMuscle.ViewModels
         {
             get;
             set;
-        }
+        } = Preferences.Get("LastSelectedUserId", 0);
 
         public string SelectedSession { get; set; }
 
+        public MainPageViewModel()
+        {
+            MessagingCenter.Subscribe<ProfileViewModel,int>(this, "ProfileSelected", async (_, id) =>
+            {
+                var profile = await App.Database.GetProfileByIdAsync(id);
+                if (profile != null)
+                {
+                    SelectedUserProfileId = id;
+                    UserName = profile.Name;
+                    Preferences.Set("LastSelectedUserId",id);
+                }
+            });
+        }
         public ICommand SubmitCommand => new Command(async () =>
         {
             //if (string.IsNullOrWhiteSpace(SelectedSession))
@@ -61,14 +74,8 @@ namespace OnegaiMuscle.ViewModels
                         "You have submitted the form today. Are you sure you want to submit next form?", "Yes", "No"))
                     return;
             }
-#warning to be replaced
-            var user = new UserProfile()
-            {
-                ContactNumber = "0122291202",
-                Email = "bcs1090212@student.uts.edu.my",
-                Name = "David Lim",
-                StudentId = "bcs1212110209"
-            };
+
+            var user = await App.Database.GetProfileByIdAsync(SelectedUserProfileId);
             try
             {
                 HttpClient httpClient = new HttpClient();

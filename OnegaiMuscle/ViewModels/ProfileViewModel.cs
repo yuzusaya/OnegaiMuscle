@@ -34,6 +34,30 @@ namespace OnegaiMuscle.ViewModels
             }
         });
 
+        public ICommand GoToCreateProfilePageCommand => new Command(async () =>
+        {
+            CurrentUserProfile = new();
+            await Shell.Current.Navigation.PushAsync(new Page()
+            {
+                BindingContext = this
+            });
+        });
+
+        public ICommand GoToUpdateProfilePageCommand => new Command<UserProfile>(async (record) =>
+        {
+            CurrentUserProfile = record;
+            await Shell.Current.Navigation.PushAsync(new Page()
+            {
+                BindingContext = this
+            });
+        });
+
+        public ICommand SelectProfileCommand => new Command<UserProfile>(async (record) =>
+        {
+            MessagingCenter.Send(this,"ProfileSelected",record.Id);
+            await Shell.Current.Navigation.PopAsync();
+        });
+
         public ICommand SaveProfileCommand => new Command(async () =>
         {
             if (string.IsNullOrWhiteSpace(CurrentUserProfile.ContactNumber) ||
@@ -46,7 +70,7 @@ namespace OnegaiMuscle.ViewModels
             }
 
             await App.Database.SaveProfileAsync(CurrentUserProfile);
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.Navigation.PopAsync();
         });
     }
 }
