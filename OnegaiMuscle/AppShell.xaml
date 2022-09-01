@@ -9,5 +9,11 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:VerificationPage}"
         Route="VerificationPage" />
+    <ShellContent
+        ContentTemplate="{DataTemplate local:ProfilePage}"
+        Route="ProfilePage" />
+    <ShellContent
+        ContentTemplate="{DataTemplate local:CreateProfilePage}"
+        Route="CreateProfilePage" />
 
 </Shell>

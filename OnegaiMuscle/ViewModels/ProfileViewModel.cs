@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using OnegaiMuscle.Models;
 
 namespace OnegaiMuscle.ViewModels
 {
-    public class ProfileViewModel
+    public partial class ProfileViewModel
     {
         public ObservableCollection<UserProfile> UserProfiles { get; set; } = new();
         public UserProfile CurrentUserProfile { get; set; } = new();
@@ -72,5 +73,11 @@ namespace OnegaiMuscle.ViewModels
             await App.Database.SaveProfileAsync(CurrentUserProfile);
             await Shell.Current.Navigation.PopAsync();
         });
+
+        [RelayCommand]
+        async Task CreateProfile(string s)
+        {
+            await Shell.Current.GoToAsync(nameof(CreateProfilePage));
+        }
     }
 }
