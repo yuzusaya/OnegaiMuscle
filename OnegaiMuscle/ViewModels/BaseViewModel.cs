@@ -6,10 +6,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace OnegaiMuscle.ViewModels
 {
-    public class BaseViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class BaseViewModel : ObservableObject, INotifyPropertyChanged
     {
         public BaseViewModel()
         {
@@ -40,6 +41,12 @@ namespace OnegaiMuscle.ViewModels
                 isBusy = value;
                 OnPropertyChanged();
             }
+        }
+
+        [RelayCommand]
+        async Task Back(string s)
+        {
+            await Shell.Current.GoToAsync("..");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

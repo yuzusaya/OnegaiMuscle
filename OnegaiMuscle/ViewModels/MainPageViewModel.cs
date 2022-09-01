@@ -10,7 +10,7 @@ using OnegaiMuscle.Models;
 
 namespace OnegaiMuscle.ViewModels
 {
-    public class MainPageViewModel : BaseViewModel
+    public partial class MainPageViewModel : BaseViewModel
     {
         public List<string> SessionList => new()
         {
@@ -23,13 +23,8 @@ namespace OnegaiMuscle.ViewModels
             "Session 7 (5.00 pm - 6.00 pm) Strictly For Staff Only"
         };
 
-        private string _userName = "Anonymous";
-
-        public string UserName
-        {
-            get => _userName;
-            set => SetProperty(ref _userName, value);
-        }
+        [ObservableProperty]
+        string _userName = "Anonymous";
 
         public int SelectedUserProfileId
         {

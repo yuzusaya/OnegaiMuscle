@@ -10,7 +10,7 @@ using OnegaiMuscle.Models;
 
 namespace OnegaiMuscle.ViewModels
 {
-    public partial class ProfileViewModel
+    public partial class ProfileViewModel : BaseViewModel
     {
         public ObservableCollection<UserProfile> UserProfiles { get; set; } = new();
         public UserProfile CurrentUserProfile { get; set; } = new();
@@ -79,5 +79,6 @@ namespace OnegaiMuscle.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(CreateProfilePage));
         }
+
     }
 }
