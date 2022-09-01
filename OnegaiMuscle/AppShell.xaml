@@ -8,6 +8,6 @@
 
     <ShellContent
         ContentTemplate="{DataTemplate local:VerificationPage}"
-        Route="MainPage" />
+        Route="VerificationPage" />
 
 </Shell>
