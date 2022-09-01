@@ -34,24 +34,24 @@
                 <StackLayout>
                     <StackLayout>
                         <Label
-                    Text="Verification Code"
-                    FontSize="36"
-                    FontAttributes="Bold"
-                    FontFamily="Roboto"
-                    TextColor="#F5F5F5"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Margin="20"/>
+                        Text="Verification Code"
+                        FontSize="36"
+                        FontAttributes="Bold"
+                        FontFamily="Roboto"
+                        TextColor="#F5F5F5"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="20"/>
 
                         <Label
-                    Text="Please type the verification code to use this application"
-                    FontSize="20"
-                    FontAttributes="None"
-                    FontFamily="Roboto"
-                    TextColor="#F5F5F5"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Margin="20"/>
+                        Text="Please type the verification code to use this application"
+                        FontSize="20"
+                        FontAttributes="None"
+                        FontFamily="Roboto"
+                        TextColor="#F5F5F5"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="20"/>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30" Margin="30">
