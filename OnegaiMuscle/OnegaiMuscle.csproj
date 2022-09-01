@@ -15,7 +15,7 @@
 		<ApplicationTitle>OnegaiMuscle</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.onegaimuscle</ApplicationId>
+		<ApplicationId>com.formeta.onegaimuscle</ApplicationId>
 		<ApplicationIdGuid>86fe9e0f-4054-4ce5-969a-b3573b110947</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -30,6 +30,15 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<!--dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=SCM1234 /p:AndroidSigningStorePass=SCM1234-->
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>scm.jks</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>SCM</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>SCM1234</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>SCM1234</AndroidSigningStorePass>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -39,9 +48,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
-		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
@@ -52,6 +58,7 @@
 	  <None Remove="Resources\Raw\74504-jumping-squats.json" />
 	  <None Remove="Resources\Raw\jumping-squats.json" />
 	  <None Remove="Resources\Raw\push-ups.json" />
+	  <None Remove="Platforms\iOS\Renderer\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -77,4 +84,7 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Platforms\iOS\Renderer\" />
+	</ItemGroup>
 </Project>

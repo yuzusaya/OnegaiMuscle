@@ -17,7 +17,6 @@ using OnegaiMuscle.CustomRenderer;
 using OnegaiMuscle.Platforms.Android.Renderer;
 using Color = Android.Graphics.Color;
 
-[assembly: ExportRenderer(typeof(EntryCustomRenderer), typeof(MyEntryRenderer))]
 namespace OnegaiMuscle.Platforms.Android.Renderer
 {
     public class MyEntryRenderer : EntryRenderer
