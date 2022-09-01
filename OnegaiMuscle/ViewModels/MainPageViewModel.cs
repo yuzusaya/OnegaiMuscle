@@ -84,6 +84,7 @@ namespace OnegaiMuscle.ViewModels
                 var response = await httpClient.PostAsync(url, null);
                 response.EnsureSuccessStatusCode();
                 Preferences.Set("LastSubmitDate",DateTime.Today);
+                await Shell.Current.DisplayAlert("Success", "Submitted", "Ok");
             }
             catch (Exception e)
             {
