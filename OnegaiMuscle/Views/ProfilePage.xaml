@@ -2,10 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:OnegaiMuscle.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:OnegaiMuscle.Models"
              x:Class="OnegaiMuscle.ProfilePage"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodel:ProfileViewModel">
-
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+        EventName="Appearing"
+        Command="{Binding AppearingCommand}">
+        </toolkit:EventToCommandBehavior>
+    </ContentPage.Behaviors>
     <Grid VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -61,6 +68,25 @@
 
         <StackLayout Grid.Row="1">
             <Frame BackgroundColor="#F5F5F5" VerticalOptions="FillAndExpand" BorderColor="#F5F5F5">
+                <CollectionView ItemsSource="{Binding UserProfiles}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView x:DataType="models:UserProfile">
+                                <SwipeView.RightItems>
+                                    <SwipeItem Text="Select"
+                                               BackgroundColor="LightGreen"/>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Red"/>
+                                </SwipeView.RightItems>
+
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"></Label>
+                                    <Label Text="{Binding Email}"></Label>
+                                </StackLayout>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Frame>
         </StackLayout>
     </Grid>

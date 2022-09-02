@@ -48,6 +48,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfilePage>();
         builder.Services.AddTransient<ProfileViewModel>();
 
+        builder.Services.AddTransient<CreateProfilePage>();
+        builder.Services.AddTransient<SaveProfileViewModel>();
+
         return builder.Build();
     }
 }

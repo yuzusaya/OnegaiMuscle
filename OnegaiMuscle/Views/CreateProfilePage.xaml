@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:OnegaiMuscle.ViewModels"
              x:Class="OnegaiMuscle.CreateProfilePage"
              Title="Create Profile"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewModels:SaveProfileViewModel">
     <Grid VerticalOptions="FillAndExpand" x:Name="screen">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -60,14 +62,14 @@
         <StackLayout Grid.Row="1">
             <Frame BackgroundColor="#F5F5F5" VerticalOptions="FillAndExpand" BorderColor="#F5F5F5">
                 <StackLayout>
-                    <Entry Placeholder="Name"/>
-                    <Entry Placeholder="Student ID"/>
-                    <Entry Placeholder="E-mail"/>
-                    <Entry Placeholder="Contact Number"/>
-                    <Button Text="Save"/>
+                    <Entry Placeholder="Name" Text="{Binding Name}"/>
+                    <Entry Placeholder="Student ID" Text="{Binding StudentId}"/>
+                    <Entry Placeholder="E-mail" Keyboard="Email" Text="{Binding Email}"/>
+                    <Entry Placeholder="Contact Number" Keyboard="Numeric" Text="{Binding ContactNumber}"/>
+                    <Button Text="Save" Command="{Binding SaveCommand}"/>
                 </StackLayout>
             </Frame>
         </StackLayout>
     </Grid>
-    
+
 </ContentPage>
