@@ -12,13 +12,9 @@ namespace OnegaiMuscle.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [NotifyParentProperty(true)]
         public string Name { get; set; }
-        [NotifyParentProperty(true)]
         public string Email { get; set; }
-        [NotifyParentProperty(true)]
         public string StudentId { get; set; }
-        [NotifyParentProperty(true)]
         public string ContactNumber { get; set; }
     }
 }

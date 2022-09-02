@@ -12,7 +12,30 @@ namespace OnegaiMuscle.ViewModels
     [QueryProperty("Id", "Id")]
     public partial class SaveProfileViewModel : BaseViewModel
     {
-        public int Id = 0;
+        private int _id;
+
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                if (_id != 0)
+                {
+                    Task.Run(async () =>
+                    {
+                        var user = await App.Database.GetProfileByIdAsync(_id);
+                        if (user != null)
+                        {
+                            Name = user.Name;
+                            Email = user.Email;
+                            StudentId = user.StudentId;
+                            ContactNumber = user.ContactNumber;
+                        }
+                    });
+                }
+            }
+        }
 
         [ObservableProperty]
         private UserProfile _currentUserProfile = new();
