@@ -70,16 +70,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="BookingPage.xaml">
+	  <MauiXaml Update="Views\BookingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CreateProfilePage.xaml">
+	  <MauiXaml Update="Views\CreateProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ProfilePage.xaml">
+	  <MauiXaml Update="Views\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="VerificationPage.xaml">
+	  <MauiXaml Update="Views\VerificationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

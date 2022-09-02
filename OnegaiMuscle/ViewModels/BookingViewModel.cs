@@ -20,11 +20,7 @@ public partial class BookingViewModel : BaseViewModel
     [ObservableProperty]
     string _userName = "Anonymous";
 
-    public int SelectedUserProfileId
-    {
-        get;
-        set;
-    } = Preferences.Get("LastSelectedUserId", 0);
+    public int SelectedUserProfileId => Preferences.Get("LastSelectedUserId", 0);
 
     public string SelectedSession { get; set; }
 
@@ -35,7 +31,6 @@ public partial class BookingViewModel : BaseViewModel
             var profile = await App.Database.GetProfileByIdAsync(id);
             if (profile != null)
             {
-                SelectedUserProfileId = id;
                 UserName = profile.Name;
                 Preferences.Set("LastSelectedUserId", id);
             }
