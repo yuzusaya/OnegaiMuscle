@@ -6,7 +6,8 @@
              xmlns:models="clr-namespace:OnegaiMuscle.Models"
              x:Class="OnegaiMuscle.ProfilePage"
              Shell.NavBarIsVisible="False"
-             x:DataType="viewmodel:ProfileViewModel">
+             x:DataType="viewmodel:ProfileViewModel"
+             x:Name="ThisPage">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
         EventName="Appearing"
@@ -73,13 +74,13 @@
                         <DataTemplate>
                             <SwipeView x:DataType="models:UserProfile">
                                 <SwipeView.RightItems>
-                                    <SwipeItem Text="Edit"
-                                               BackgroundColor="LightGreen"
-                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=UpdateProfileCommand}"
-                                               CommandParameter="{Binding .}"/>
                                     <SwipeItem Text="Delete"
                                                BackgroundColor="Red"
-                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=DeleteProfileCommand}"
+                                               Command="{Binding BindingContext.DeleteProfileCommand,Source={x:Reference ThisPage}}"
+                                               CommandParameter="{Binding .}"/>
+                                    <SwipeItem Text="Edit"
+                                               BackgroundColor="LightGreen"
+                                               Command="{Binding BindingContext.UpdateProfileCommand,Source={x:Reference ThisPage}}"
                                                CommandParameter="{Binding .}"/>
                                 </SwipeView.RightItems>
 

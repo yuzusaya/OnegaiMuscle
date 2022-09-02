@@ -46,10 +46,7 @@ public partial class BookingViewModel : BaseViewModel
         MessagingCenter.Subscribe<SaveProfileViewModel>(this, "NameChanged", async(_) =>
         {
             var profile = await App.Database.GetProfileByIdAsync(Preferences.Get("LastSelectedUserId",0));
-            if (profile != null)
-            {
-                UserName = profile.Name;
-            }
+            UserName = (profile?.Name)?? "Anonymous";
         });
     }
     [RelayCommand]
