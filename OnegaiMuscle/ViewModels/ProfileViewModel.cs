@@ -12,7 +12,7 @@ namespace OnegaiMuscle.ViewModels
 {
     public partial class ProfileViewModel : BaseViewModel
     {
-        public ObservableCollection<UserProfile> UserProfiles { get; set; } = new();
+        public ObservableCollection<UserProfile> UserProfiles { get;  } = new();
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         async Task DeleteProfile(UserProfile record)
@@ -36,9 +36,11 @@ namespace OnegaiMuscle.ViewModels
         [RelayCommand(AllowConcurrentExecutions = false)]
         async Task UpdateProfile(UserProfile record)
         {
-            await Shell.Current.Navigation.PushAsync(new Page()
+            await Shell.Current.GoToAsync($"{nameof(CreateProfilePage)}",
+                animate:true,
+                new Dictionary<string, object>()
             {
-                BindingContext = this
+                {"Id",record.Id}
             });
         }
 
@@ -52,7 +54,7 @@ namespace OnegaiMuscle.ViewModels
         async Task SelectProfile(UserProfile record)
         {
             MessagingCenter.Send(this, "ProfileSelected", record.Id);
-            await Shell.Current.Navigation.PopAsync();
+            await Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]

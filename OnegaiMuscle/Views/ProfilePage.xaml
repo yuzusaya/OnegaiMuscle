@@ -74,12 +74,20 @@
                             <SwipeView x:DataType="models:UserProfile">
                                 <SwipeView.RightItems>
                                     <SwipeItem Text="Select"
-                                               BackgroundColor="LightGreen"/>
+                                               BackgroundColor="LightGreen"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=SelectProfileCommand}"
+                                               CommandParameter="{Binding .}"/>
                                     <SwipeItem Text="Delete"
-                                               BackgroundColor="Red"/>
+                                               BackgroundColor="Red"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=DeleteProfileCommand}"
+                                               CommandParameter="{Binding .}"/>
                                 </SwipeView.RightItems>
 
                                 <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=UpdateProfileCommand}"
+                                                              CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
                                     <Label Text="{Binding Name}"></Label>
                                     <Label Text="{Binding Email}"></Label>
                                 </StackLayout>

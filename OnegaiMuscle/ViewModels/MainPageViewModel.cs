@@ -36,6 +36,15 @@ namespace OnegaiMuscle.ViewModels
 
         public MainPageViewModel()
         {
+            Task.Run(async () =>
+            {
+                var profile = await App.Database.GetProfileByIdAsync(Preferences.Get("LastSelectedUserId", 0));
+                if (profile != null)
+                {
+                    UserName = profile.Name;
+                }
+            });
+
             MessagingCenter.Subscribe<ProfileViewModel,int>(this, "ProfileSelected", async (_, id) =>
             {
                 var profile = await App.Database.GetProfileByIdAsync(id);
