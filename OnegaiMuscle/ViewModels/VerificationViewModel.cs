@@ -8,6 +8,6 @@ public partial class VerificationViewModel:ObservableObject
     [RelayCommand]
     async Task Verify(string s)
     {
-        await Shell.Current.GoToAsync(nameof(BookingPage));
+        await Shell.Current.GoToAsync($"//{nameof(BookingPage)}");
     }
 }

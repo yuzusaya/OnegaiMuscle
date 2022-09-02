@@ -22,5 +22,9 @@ public partial class App : Application
 		InitializeComponent();
 
 		MainPage = new AppShell();
+        if (Preferences.Get("LoginSuccess", false))
+        {
+            Shell.Current.GoToAsync($"//{nameof(BookingPage)}");
+        }
 	}
 }

@@ -10,10 +10,6 @@
         ContentTemplate="{DataTemplate local:VerificationPage}"
         Route="VerificationPage" />
     <ShellContent
-        ContentTemplate="{DataTemplate local:ProfilePage}"
-        Route="ProfilePage" />
-    <ShellContent
-        ContentTemplate="{DataTemplate local:CreateProfilePage}"
-        Route="CreateProfilePage" />
-
+        ContentTemplate="{DataTemplate local:BookingPage}"
+        Route="BookingPage" />
 </Shell>

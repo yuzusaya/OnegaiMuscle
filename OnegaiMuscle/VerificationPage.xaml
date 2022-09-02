@@ -57,16 +57,16 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30" Margin="30" HeightRequest="60">
                         <Frame x:Name="box1" BackgroundColor="White" BorderColor="DarkGray" WidthRequest="50" VerticalOptions="Fill" Padding="0" Margin="0">
-                            <renderer:EntryCustomRenderer Focused="Entry_Focused" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next" Keyboard="Numeric" MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next" Keyboard="Numeric" MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large" TextChanged="InputView1_OnTextChanged" x:Name="entry1"/>
                         </Frame>
                         <Frame x:Name="box2"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
-                            <renderer:EntryCustomRenderer Focused="Entry_Focused_1" Unfocused="box1_Unfocused"  Text="" ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_1" Unfocused="box1_Unfocused"  Text="" ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large" TextChanged="InputView2_OnTextChanged" x:Name="entry2"/>
                         </Frame>
                         <Frame x:Name="box3"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
-                            <renderer:EntryCustomRenderer Focused="Entry_Focused_2" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_2" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large" TextChanged="InputView3_OnTextChanged" x:Name="entry3"/>
                         </Frame>
                         <Frame x:Name="box4"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="50"  VerticalOptions="Fill" Padding="0" Margin="0">
-                            <renderer:EntryCustomRenderer Focused="Entry_Focused_3" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                            <renderer:EntryCustomRenderer Focused="Entry_Focused_3" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="0" HorizontalOptions="CenterAndExpand" FontSize="Large" TextChanged="InputView4_OnTextChanged" x:Name="entry4"/>
                         </Frame>
                     </StackLayout>
 
