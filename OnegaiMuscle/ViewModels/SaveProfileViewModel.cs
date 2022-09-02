@@ -70,7 +70,12 @@ namespace OnegaiMuscle.ViewModels
             CurrentUserProfile.StudentId = StudentId;
             CurrentUserProfile.ContactNumber = ContactNumber;
             await App.Database.SaveProfileAsync(CurrentUserProfile);
+            if (Preferences.Get("LastSelectedUserId", 0) == CurrentUserProfile.Id)
+            {
+                MessagingCenter.Send(this,"NameChanged");
+            }
             await Shell.Current.Navigation.PopAsync();
+            
         }
     }
 }

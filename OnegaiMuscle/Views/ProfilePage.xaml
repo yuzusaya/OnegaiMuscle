@@ -68,14 +68,14 @@
 
         <StackLayout Grid.Row="1">
             <Frame BackgroundColor="#F5F5F5" VerticalOptions="FillAndExpand" BorderColor="#F5F5F5">
-                <CollectionView ItemsSource="{Binding UserProfiles}">
+                <CollectionView ItemsSource="{Binding UserProfiles}" SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView x:DataType="models:UserProfile">
                                 <SwipeView.RightItems>
-                                    <SwipeItem Text="Select"
+                                    <SwipeItem Text="Edit"
                                                BackgroundColor="LightGreen"
-                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=SelectProfileCommand}"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=UpdateProfileCommand}"
                                                CommandParameter="{Binding .}"/>
                                     <SwipeItem Text="Delete"
                                                BackgroundColor="Red"
@@ -85,7 +85,7 @@
 
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=UpdateProfileCommand}"
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProfileViewModel}},Path=SelectProfileCommand}"
                                                               CommandParameter="{Binding .}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                     <Label Text="{Binding Name}"></Label>

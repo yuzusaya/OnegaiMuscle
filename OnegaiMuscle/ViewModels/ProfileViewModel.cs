@@ -12,7 +12,7 @@ namespace OnegaiMuscle.ViewModels
 {
     public partial class ProfileViewModel : BaseViewModel
     {
-        public ObservableCollection<UserProfile> UserProfiles { get;  } = new();
+        public ObservableCollection<UserProfile> UserProfiles { get; } = new();
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         async Task DeleteProfile(UserProfile record)
@@ -26,7 +26,7 @@ namespace OnegaiMuscle.ViewModels
                 if (Preferences.Get("LastSelectedUserId", 0) == record.Id)
                 {
                     var profiles = await App.Database.GetProfilesAsync();
-                    var nextProfileId = (profiles.FirstOrDefault()?.Id)?? 0;
+                    var nextProfileId = (profiles.FirstOrDefault()?.Id) ?? 0;
                     Preferences.Set("LastSelectedUserId", nextProfileId);
                     MessagingCenter.Send(this, "ProfileSelected", nextProfileId);
                 }
@@ -37,11 +37,11 @@ namespace OnegaiMuscle.ViewModels
         async Task UpdateProfile(UserProfile record)
         {
             await Shell.Current.GoToAsync($"{nameof(CreateProfilePage)}",
-                animate:true,
+                animate: true,
                 new Dictionary<string, object>()
-            {
-                {"Id",record.Id}
-            });
+                {
+                        {"Id",record.Id}
+                });
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
@@ -53,8 +53,11 @@ namespace OnegaiMuscle.ViewModels
         [RelayCommand(AllowConcurrentExecutions = false)]
         async Task SelectProfile(UserProfile record)
         {
-            MessagingCenter.Send(this, "ProfileSelected", record.Id);
-            await Shell.Current.GoToAsync("..");
+            if (await Shell.Current.DisplayAlert("Confirmation", $"Are you sure you want set {record.Name} as profile?", "Yes", "No"))
+            {
+                MessagingCenter.Send(this, "ProfileSelected", record.Id);
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
         [RelayCommand]

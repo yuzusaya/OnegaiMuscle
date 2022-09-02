@@ -43,15 +43,31 @@ public partial class BookingViewModel : BaseViewModel
                 Preferences.Set("LastSelectedUserId", id);
             }
         });
+        MessagingCenter.Subscribe<SaveProfileViewModel>(this, "NameChanged", async(_) =>
+        {
+            var profile = await App.Database.GetProfileByIdAsync(Preferences.Get("LastSelectedUserId",0));
+            if (profile != null)
+            {
+                UserName = profile.Name;
+            }
+        });
     }
     [RelayCommand]
     async Task Submit()
     {
-        if (string.IsNullOrWhiteSpace(SelectedSession))
+        var user = await App.Database.GetProfileByIdAsync(SelectedUserProfileId);
+        if (user == null)
         {
+            await Shell.Current.DisplayAlert("Warning", "You haven't choose the profile", "Ok");
             return;
         }
-
+        var ans = await Shell.Current.DisplayActionSheet("Choose Session", "Cancel", null, SessionList.ToArray());
+        await Shell.Current.DisplayAlert("Submitted", $"{ans}{Environment.NewLine}{user.ToString()}", "Ok");
+        //if (string.IsNullOrWhiteSpace(SelectedSession))
+        //{
+        //    return;
+        //}
+        return;
         if (SelectedUserProfileId == 0)
         {
             return;
@@ -67,7 +83,7 @@ public partial class BookingViewModel : BaseViewModel
                 return;
         }
 
-        var user = await App.Database.GetProfileByIdAsync(SelectedUserProfileId);
+        
         try
         {
             HttpClient httpClient = new HttpClient();
