@@ -17,45 +17,16 @@ namespace OnegaiMuscle.ViewModels
 
         }
 
-        string title;
-        public string Title
-        {
-            get => title;
-            set
-            {
-                if (title == value)
-                    return;
-                title = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        string _title;
 
-        bool isBusy;
-        public bool IsBusy
-        {
-            get => isBusy;
-            set
-            {
-                if (isBusy == value)
-                    return;
-                isBusy = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        bool _isBusy;
 
         [RelayCommand]
         async Task Back(string s)
         {
             await Shell.Current.GoToAsync("..");
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
