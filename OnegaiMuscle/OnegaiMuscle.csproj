@@ -44,6 +44,10 @@
 	  <CodesignProvision>OnegaiMusclePublishProfile</CodesignProvision>
 	  <CodesignKey>Apple Distribution: Edusar Resources Sdn. Bhd. (266DJMW4K9)</CodesignKey>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
