@@ -63,17 +63,22 @@ public partial class VerificationPage : ContentPage
     {
         if (e.NewTextValue.Length > 0)
         {
-            if (entry1.Text + entry2.Text + entry3.Text + entry4.Text == "6996")
-            {
-                entry4.Unfocus();
-                await Shell.Current.GoToAsync($"//{nameof(BookingPage)}");
-                Preferences.Set("LoginSuccess",true);
-            }
-            else
-            {
-                await DisplayAlert("Warning", "Your phone will be hacked soon", "Sorry");
-                entry1.Focus();
-            }
+            Submit(null,null);
+        }
+    }
+
+    private async void Submit(object sender, EventArgs e)
+    {
+        if (entry1.Text + entry2.Text + entry3.Text + entry4.Text == "1919")
+        {
+            entry4.Unfocus();
+            await Shell.Current.GoToAsync($"//{nameof(BookingPage)}");
+            Preferences.Set("LoginSuccess", true);
+        }
+        else
+        {
+            await DisplayAlert("Warning", "Your phone will be hacked soon", "Sorry");
+            entry1.Focus();
         }
     }
 }
