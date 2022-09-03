@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>OnegaiMuscle</ApplicationTitle>
+		<ApplicationTitle>Onegai Muscle</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.formeta.onegaimuscle</ApplicationId>
