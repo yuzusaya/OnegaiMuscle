@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using OnegaiMuscle.CustomRenderer;
+using OnegaiMuscle.Services;
 using OnegaiMuscle.ViewModels;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -38,7 +39,7 @@ public static class MauiProgram
 #endif
             ;
         builder.UseMauiApp<App>().UseMauiCommunityToolkit();
-
+        builder.Services.AddSingleton<AlertService>();
         builder.Services.AddSingleton<VerificationPage>();
         builder.Services.AddSingleton<VerificationViewModel>();
 
