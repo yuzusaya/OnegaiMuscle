@@ -85,7 +85,7 @@ public partial class BookingViewModel : BaseViewModel
         try
         {
             HttpClient httpClient = new HttpClient();
-            var url = new Uri($"https://docs.google.com/forms/u/0/d/e/1FAIpQLSdYrqClc4Knm6sFzeUY8ldazQBQteMCv6-d9xWo47V4Ne-K0A/formResponse?entry.135433756={user.Name}&entry.1463710679={user.StudentId}&entry.390244614={user.ContactNumber}&entry.984636927_year={currentTime.Year}&entry.984636927_month={currentTime.Month}&entry.984636927_day={currentTime.Day}&entry.1493146651={SelectedSession}&emailAddress={user.Email}");
+            var url = new Uri($"https://docs.google.com/forms/u/0/d/e/1FAIpQLSdYrqClc4Knm6sFzeUY8ldazQBQteMCv6-d9xWo47V4Ne-K0A/formResponse?entry.135433756={user.Name}&entry.1463710679={user.StudentId}&entry.390244614={user.ContactNumber}&entry.984636927_year={currentTime.Year}&entry.984636927_month={currentTime.Month}&entry.984636927_day={currentTime.Day}&entry.1493146651={ans}&emailAddress={user.Email}");
             //var response = await httpClient.PostAsync("https://docs.google.com/forms/u/0/d/e/1FAIpQLScCOeWb1_DXr2RpNgtn1QyxhOAxll6eZysPHIlysf6HDobGxg/formResponse?entry.366340186=Option 2", null);
             var response = await httpClient.PostAsync(url, null);
             response.EnsureSuccessStatusCode();
